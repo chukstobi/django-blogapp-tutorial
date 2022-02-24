@@ -1,0 +1,5 @@
+<ul class="container">
+  {% for poss in recent_posts %}
+  <li><a href="{{ poss.get_absolute_url }}"> {{ poss.title }}</a></li>
+  {% endfor %}
+</ul>
