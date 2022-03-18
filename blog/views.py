@@ -102,3 +102,15 @@ class SearchBlog(ListView):
     def get_queryset(self):
         query = self.request.GET.get('q')
         return Post.objects.filter(title__icontains=query).order_by('-date_posted')
+
+
+def user_post(request, username):
+    user = get_object_or_404(User, username=username)
+    post = Post.objects.filter(author=user).order_by('-date_posted')
+    post_count = Post.objects.filter(author=user).count()
+    context = {
+        "user": user,
+        "post": post,
+        "post_count": post_count
+    }
+    return render(request, "users/user_detail.html", context)

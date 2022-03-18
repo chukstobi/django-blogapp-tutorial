@@ -12,7 +12,7 @@ urlpatterns = [
     path('post/search', views.SearchBlog.as_view(), name='blog-search'),
     path('post/tags/<slug:tag_slug>/',
          views.TagListView.as_view(), name='posts_by_tag'),
-    path('user/<str:username>', views.UserPostListView.as_view(), name='user-posts'),
+    path('user/<str:username>', views.user_post, name='user-posts'),
     path('post/new', views.PostCreateView.as_view(), name='blog-create'),
     path('post/<int:pk>', views.PostDetailView.as_view(), name='post-detail'),
     path('post/<int:pk>/update',
